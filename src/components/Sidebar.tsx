@@ -1,17 +1,16 @@
 import { BiRightArrowAlt, BiLeftArrowAlt } from "react-icons/bi";
 import { useState, useEffect } from "react";
 
-export function Sidebar() {
-  const [showPanel, setShowPanel] = useState(false);
-  const [currentTool, setCurrentTool] = useState({
-    name: "brush",
-    thickness: 2.5,
-    id: 1,
-  });
+interface Tool {
+  setCurrentTool(props: {
+    name: string;
+    thickness: number;
+    id: number;
+  }): unknown;
+}
 
-  useEffect(() => {
-    console.log(currentTool);
-  }, [currentTool]);
+export function Sidebar(tool: Tool) {
+  const [showPanel, setShowPanel] = useState(false);
 
   const handlePanelClick = () => {
     setShowPanel(!showPanel);
@@ -31,7 +30,7 @@ export function Sidebar() {
     return (
       <div
         onClick={() => {
-          setCurrentTool({
+          tool.setCurrentTool({
             name: props.toolName,
             thickness: props.toolThickness,
             id: props.id,

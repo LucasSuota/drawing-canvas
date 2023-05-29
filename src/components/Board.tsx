@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function Canvas() {
+export function Board() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
