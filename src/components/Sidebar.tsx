@@ -1,5 +1,5 @@
 import { BiRightArrowAlt, BiLeftArrowAlt } from "react-icons/bi";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 interface Tool {
   setCurrentTool(props: {
@@ -20,6 +20,7 @@ export function Sidebar(tool: Tool) {
     { name: "Brush", thickness: 2.5, id: 1 },
     { name: "Pencil", thickness: 1, id: 2 },
     { name: "Eraser", thickness: 2, id: 3 },
+    { name: "Bucket", thickness: 5, id: 4 },
   ];
 
   const Items = (props: {
