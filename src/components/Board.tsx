@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 interface Tool {
   name: string;
   thickness: number;
@@ -7,9 +5,21 @@ interface Tool {
 }
 
 export function Board(props: { currentTool: Tool }) {
+  const Canvas = () => {
+    return (
+      <div className="bg-white w-3/5 h-4/5 drop-shadow-sm">
+        <div className="bg-indigo-500 flex items-center justify-center">
+          <h1 className="font-medium">Tool: {props.currentTool.name}</h1>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div className="absolute left-24 ">
-      <h2>{props.currentTool.name}</h2>
+    <div className="">
+      <div className="w-full h-[100vh] flex items-center justify-center bg-blue-200">
+        <Canvas />
+      </div>
     </div>
   );
 }
