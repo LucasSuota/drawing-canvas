@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, useEffect } from "react";
 
 interface Tool {
   name: string;
@@ -20,11 +20,24 @@ export function Board(props: { currentTool: Tool }) {
   });
 
   const Canvas = () => {
+    const [mousePos, setMousePos] = useState({});
+
+    useEffect(() => {
+      const handleMouseMove = (e: { clientX: number; clientY: number }) => {
+        setMousePos({ x: e.clientX, y: e.clientY });
+      };
+
+      ref.current?.addEventListener("mousemove", handleMouseMove);
+    }, []);
+
     return (
       <div className="w-3/5 h-4/5 bg-white rounded-b-xl shadow-xl" ref={ref}>
         <h1>
           X: {width} Y: {height}
         </h1>
+        <h2>
+          X: {mousePos.x}, Y: {mousePos.y}
+        </h2>
       </div>
     );
   };
