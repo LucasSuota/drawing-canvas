@@ -20,7 +20,7 @@ export function Board(props: { currentTool: Tool }) {
   });
 
   const Canvas = () => {
-    const [mousePos, setMousePos] = useState({});
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
       const handleMouseMove = (e: { clientX: number; clientY: number }) => {
